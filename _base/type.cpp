@@ -19,4 +19,10 @@ int main (int argc, char *argv[]) {
 	auto a2 = pa;
 	auto &a3 = a;
 	auto &a4 = pa;
+
+	//decltype(c++11):
+	int ci = 0, &cj = ci;
+	decltype(ci) x = 0;
+	decltype(cj) y = x;
+	decltype(x + 0) z;
 }
