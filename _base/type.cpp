@@ -12,4 +12,11 @@ int main (int argc, char *argv[]) {
 
 	//const pointer of a const object(Top-level const):
 	const double *const ccp = &pi;//ccp cannot be modified.
+
+	//auto(c++11):
+	auto a = 3.14, *pa = &a;
+	auto a1 = a;
+	auto a2 = pa;
+	auto &a3 = a;
+	auto &a4 = pa;
 }
