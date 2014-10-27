@@ -16,8 +16,13 @@ int main(int argc, char *argv[]) {
 	//getline():
 	string line;
 	while(getline(cin, line)) {
-		if(!line.empty() && line.size() <= 10) {
+		if (!line.empty() && line.size() <= 10) {
+			for (auto &c : line) {
+				c = toupper(c);//'c' is a reference, so it can be modified
+			}
 			cout << line << endl;
+		} else {
+			cout << "Too long!!" << endl;
 		}
 	}
 
