@@ -1,4 +1,6 @@
-// ./image > image.jpg
+/*
+ * http://fabiensanglard.net/rayTracing_back_of_business_card/
+ */
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
