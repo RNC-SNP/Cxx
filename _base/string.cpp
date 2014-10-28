@@ -10,8 +10,14 @@ int main(int argc, char *argv[]) {
 	//Init with count and char:
 	string s1(9, 'Z');
 	string s2 = string(8, 'z');
-	cout << "s1: " << s1 << endl;
-	cout << "s2: " << s2 << endl;
+
+	//Iterator:
+	if (s2.begin() != s2.end()) {//compare two iterators(pointers) to check if the string is empty
+		for (auto it = s2.begin(); it != s2.end() && !isspace(*it); it++) {
+			*it = toupper(*it);
+			cout << *it << endl;
+		}
+	}	
 
 	//getline():
 	string line;
