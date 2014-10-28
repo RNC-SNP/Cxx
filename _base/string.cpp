@@ -17,6 +17,7 @@ int main(int argc, char *argv[]) {
 	string line;
 	while(getline(cin, line)) {
 		if (!line.empty() && line.size() <= 10) {
+			line[0] = toupper(line[0]);//Access string as char array
 			for (auto &c : line) {
 				c = toupper(c);//'c' is a reference, so it can be modified
 			}
