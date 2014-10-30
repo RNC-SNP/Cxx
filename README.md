@@ -1,4 +1,4 @@
-Cpp-Demo
+Cxx-Demo
 ============
 
 Demos of C++.
