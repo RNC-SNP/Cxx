@@ -25,4 +25,6 @@ int main (int argc, char **argv) {
 	decltype(ci) x = 0;
 	decltype(cj) y = x;
 	decltype(x + 0) z;
+
+	return 0;
 }
