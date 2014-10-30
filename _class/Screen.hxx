@@ -7,16 +7,26 @@ using std::string;
 
 class Screen {
 	friend class WindowManager;//WindowManager can visit all menmbers of this class
+	/*
+	 * Note:
+	 * 1. Friend function is not a member function of the class, so you can not use 'this' pointer in its body.
+	 * 2. Friend function can not be inherited.
+	 */
 	//friend void WindowManager::clear(ScreenIndex);
 
 public:
 	//typedef string::size_type pos;
 	using pos = string::size_type;	
 
-	Screen() = default;//default constructor(C++11)
+	Screen() = default;//Default-Constructor(C++11)
 
 	Screen(pos h, pos w, char c) : height(h), width(w), content(h * w, c){
-		//constructor with initializer-list
+		//constructor with Initializer-List
+		//NOTE: All reference and const menbers should be initialized with Initializer-List !!
+	}
+
+	Screen(pos h, pos w) : Screen(h, w, ' '){
+		//Delegating-Constructor(C++11)
 	}
 
 	const char get(pos h, pos w);
