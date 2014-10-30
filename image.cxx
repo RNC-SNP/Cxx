@@ -89,7 +89,7 @@ v S(v o, v d){
 	return v(p, p, p) + S(h, r) * .5;
 }
 
-int main(){
+int main(int argc, char **argv){
 	printf("P6 512 512 255 ");
 	v g = !v(-6, -16, 0), a = !(v(0, 0, 1) ^ g) * .002, b = !(g ^ a) * .002, c = (a + b) * -256 + g;
 	for(int y = 512; y--;){
@@ -102,4 +102,5 @@ int main(){
 			printf("%c%c%c", (int)p.x, (int)p.y, (int)p.z);
 		}
 	}
+	return 0;
 }

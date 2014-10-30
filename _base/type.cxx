@@ -1,6 +1,6 @@
 #include <iostream>
 
-int main (int argc, char *argv[]) {
+int main (int argc, char **argv) {
 	// void* pointer can hold the address of any type object.
 	double obj = 3.14, *p = &obj;
 	void *vp = &obj;

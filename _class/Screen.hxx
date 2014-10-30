@@ -4,8 +4,8 @@ using std::string;
 
 class Screen {
 public:
-	using pos = string::size_type;
 	//typedef string::size_type pos;
+	using pos = string::size_type;	
 
 	Screen() = default;//default constructor(C++11)
 

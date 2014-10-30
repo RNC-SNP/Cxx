@@ -3,7 +3,7 @@
 using std::cout;
 using std::endl;
 
-int main (int argc, char *argv[]) {
+int main (int argc, char **argv) {
 	//static_cast:
 	int x = 8, y = 9;
 	double z = static_cast<double>(x) / y;

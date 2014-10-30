@@ -3,7 +3,7 @@
 using std::cout;
 using std::endl;
 
-int main(int argc, char *argv[]) {
+int main(int argc, char **argv) {
 	char array1[4][3] = {
 		{'c', 'o', 'm'},
 		{'o', 'r', 'g'},

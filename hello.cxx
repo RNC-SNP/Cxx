@@ -6,7 +6,7 @@ using std::cout;
 using std::endl;
 using std::string;
 
-int main (int argc, char *argv[]) {
+int main (int argc, char **argv) {
 	string firstName, familyName;
 	cin >> firstName >> familyName;
 	cout << "Hello, " << firstName << " " << familyName << "." << endl;

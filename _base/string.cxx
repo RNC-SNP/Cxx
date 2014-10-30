@@ -6,7 +6,7 @@ using std::cin;
 using std::cout;
 using std::endl;
 
-int main(int argc, char *argv[]) {
+int main(int argc, char **argv) {
 	//Init with count and char:
 	string s1(9, 'Z');
 	string s2 = string(8, 'z');

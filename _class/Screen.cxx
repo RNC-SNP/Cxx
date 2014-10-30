@@ -1,4 +1,4 @@
-#include "Screen.h"
+#include "Screen.hxx"
 #include <iostream>
 
 using std::cout;

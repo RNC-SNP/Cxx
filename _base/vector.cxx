@@ -5,7 +5,7 @@ using std::cout;
 using std::endl;
 using std::vector;
 
-int main (int argc, char *argv[]) {
+int main (int argc, char **argv) {
 	//init vector:
 	vector<char> v1 = {'1', '3', '5', '7', '9'};
 	vector<char> v2{'0', '2', '4', '6', '8'};
