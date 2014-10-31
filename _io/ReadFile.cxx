@@ -14,14 +14,14 @@ void readLine(const string &fName, vector<string> &v);
 void print(vector<string> &v);
 
 int main (int argc, char **argv) {
-	const string fileName = "ReadFile.cxx";
-	vector<string> v;
-	readWord(fileName, v);
+    const string fileName = "ReadFile.cxx";
+    vector<string> v;
+    readWord(fileName, v);
     print(v);
     v.clear();
     readLine(fileName, v);
     print(v);
-	return 0;
+    return 0;
 }
 
 void readWord(const string &fName, vector<string> &v) {
@@ -51,7 +51,7 @@ void readLine(const string &fName, vector<string> &v) {
 }
 
 void print(vector<string> &v) {
-	for (vector<string>::iterator it = v.begin(); it != v.end(); ++it) {
+    for (vector<string>::iterator it = v.begin(); it != v.end(); ++it) {
         cout << *it;
     }
 }
