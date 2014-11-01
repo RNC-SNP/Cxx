@@ -1,7 +1,6 @@
 #include <iostream>
 
-using std::cout;
-using std::endl;
+using namespace std;
 
 int main(int argc, char **argv) {
 	char array1[4][3] = {

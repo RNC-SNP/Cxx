@@ -2,8 +2,7 @@
 #include "Screen.hxx"
 #include "WindowManager.hxx"
 
-using std::cout;
-using std::endl;
+using namespace std;
 
 int main(int argc, char **argv) {
 	Screen *screen = new Screen(10, 10, 'x');

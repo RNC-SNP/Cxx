@@ -4,7 +4,7 @@
 #include <vector>
 #include "Screen.hxx"
 
-using std::vector;
+using namespace std;
 
 class WindowManager{
 public:

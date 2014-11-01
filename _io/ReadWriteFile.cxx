@@ -3,13 +3,7 @@
 #include <string>
 #include <vector>
 
-using std::cout;
-using std::endl;
-using std::string;
-using std::vector;
-using std::ifstream;
-using std::ofstream;
-using std::ios;
+using namespace std;
 
 void readPrint(const string &inFileName);
 void readWrite(const string &inFileName, const string &outFileName);

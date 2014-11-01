@@ -3,7 +3,7 @@
 
 #include <string>
 
-using std::string;
+using namespace std;
 
 class Screen {
 	friend class WindowManager;//WindowManager can visit all menmbers of this class
