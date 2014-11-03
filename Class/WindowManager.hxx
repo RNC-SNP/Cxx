@@ -8,9 +8,13 @@ using namespace std;
 
 class WindowManager{
 public:
-	WindowManager() = default;//Default-Constructor(C++11)
+	WindowManager() = default;//use the synthesized default constructor(C++11)
 
-	~WindowManager() = default;//Default-Deconstructor(C++11)
+	//WindowManager(const WindowManager&) = delete;//use 'delete' to prevent from copying construction(C++11)
+
+	WindowManager &operator = (const WindowManager&) = delete; //use 'delete' to prevent assignment(C++11)
+
+	~WindowManager() = default;//use the synthesized default deconstructor(C++11)
 
 	using ScreenIndex = vector<Screen>::size_type;
 

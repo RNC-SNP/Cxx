@@ -18,7 +18,7 @@ public:
 	//typedef string::size_type pos;
 	using pos = string::size_type;	
 
-	Screen() = default;//Default-Constructor(C++11)
+	Screen() = default;//use the synthesized default constructor(C++11)
 
 	Screen(pos h, pos w, char c) : height(h), width(w), content(h * w, c){
 		//constructor with Initializer-List
@@ -29,7 +29,11 @@ public:
 		//Delegating-Constructor(C++11)
 	}
 
-	~Screen() = default;//Default-Deconstructor(C++11)
+	//Screen(const Screen&) = delete;//use 'delete' to prevent copying construction(C++11)
+
+	Screen &operator = (const Screen&) = delete; //use 'delete' to prevent assignment(C++11)
+
+	~Screen() = default;//use the synthesized default deconstructor(C++11)
 
 	const char get(pos h, pos w);
 
