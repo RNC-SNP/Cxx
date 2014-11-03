@@ -11,5 +11,7 @@ int main(int argc, char **argv) {
 	WindowManager *wm = new WindowManager();
 	wm->clear(9);
 
+	delete screen;
+
 	return 0;
 }
