@@ -9,6 +9,7 @@ int main(int argc, char **argv) {
 		{'n', 'e', 't'},
 		{'b', 'i', 'z'}
 	};
+
 	for (int i = 0; i < 4; i++) {
 		for (int j = 0; j < 3; j++) {
 			cout << array1[i][j];
@@ -23,6 +24,9 @@ int main(int argc, char **argv) {
 		}
 		cout << endl;
 	}
+
+	char *ap = new char[5]{'a', 'b', 'c', 'd', 'e'};
+	delete [] ap;
 
 	return 0;
 }
