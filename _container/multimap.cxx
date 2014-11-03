@@ -14,8 +14,7 @@ int main (int argc, char **argv) {
 		cout << x.first << ": " << x.second << endl;
     }
 
-    //Find element:
-    multimap<string, int>::iterator it = mmp.find("Rinc");
+    //Find element:multimap<string, int>::iterator it = mmp.find("Rinc");
     if (it != mmp.end()) {
     	mmp.erase(it);
     	cout << "Found and erased..." << endl;
