@@ -29,6 +29,8 @@ public:
 		//Delegating-Constructor(C++11)
 	}
 
+	~Screen() = default;//Default-Deconstructor(C++11)
+
 	const char get(pos h, pos w);
 
 	Screen *move(pos r, pos c);

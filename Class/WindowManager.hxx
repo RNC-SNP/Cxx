@@ -8,6 +8,9 @@ using namespace std;
 
 class WindowManager{
 public:
+	WindowManager() = default;//Default-Constructor(C++11)
+
+	~WindowManager() = default;//Default-Deconstructor(C++11)
 
 	using ScreenIndex = vector<Screen>::size_type;
 
