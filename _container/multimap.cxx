@@ -12,13 +12,14 @@ int main (int argc, char **argv) {
 	//Travel multimap:
 	for (const auto &x : mmp) {
 		cout << x.first << ": " << x.second << endl;
-    }
+	}
 
-    //Find element:multimap<string, int>::iterator it = mmp.find("Rinc");
-    if (it != mmp.end()) {
-    	mmp.erase(it);
-    	cout << "Found and erased..." << endl;
-    }
+	//Find element:
+	multimap<string, int>::iterator it = mmp.find("Rinc");
+	if (it != mmp.end()) {
+		mmp.erase(it);
+		cout << "Found and erased..." << endl;
+	}
 
-    return 0;
+	return 0;	
 }
