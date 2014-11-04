@@ -4,15 +4,20 @@ using namespace std;
 
 class Point {
 public:
-	Point(double d1, double d2, double d3): x(d1), y(d2), z(d3){}
+	Point(int i1, int i2, int i3): x(i1), y(i2), z(i3){}
 	Point operator-();
+	Point operator++();
 	bool operator==(const Point &p);
 	Point operator+(const Point &p);
-	double x, y, z;
+	int x, y, z;
 };
 
 Point Point::operator-() {
 	return Point(-x, -y, -z);
+}
+
+Point Point::operator++() {
+	return Point(++x, ++y, ++z);
 }
 
 bool Point::operator==(const Point &p) {
@@ -24,10 +29,12 @@ Point Point::operator+(const Point &p) {
 }
 
 int main (int argc, char **argv) {
-	Point p1(1.2, 2.3, 3.4);
-	Point p2(5.6, 6.7, 7.8);
+	Point p1(1, 3, 5);
+	Point p2(2, 4, 6);
 	cout << (p1 == p2 ? "p1 == p2" : "p1 != p2") << endl;
 	Point p3 = -(p1 + p2);
+	//p3.operator++();
+	++p3;
 	cout << "p3: " << p3.x << ", " << p3.y << ", " << p3.z <<endl;
 	return 0;
 }
