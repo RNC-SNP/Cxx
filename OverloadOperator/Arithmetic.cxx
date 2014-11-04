@@ -9,7 +9,10 @@ public:
 	Point operator++();
 	bool operator==(const Point &p);
 	Point operator+(const Point &p);
+	int operator[](size_t n);
+private:
 	int x, y, z;
+	int values[3] = {x, y, z};
 };
 
 Point Point::operator-() {
@@ -28,6 +31,10 @@ Point Point::operator+(const Point &p) {
 	return Point(x + p.x, y + p.y, z + p.z);
 }
 
+int Point::operator[](size_t n) {
+	return values[n];
+}
+
 int main (int argc, char **argv) {
 	Point p1(1, 3, 5);
 	Point p2(2, 4, 6);
@@ -35,6 +42,6 @@ int main (int argc, char **argv) {
 	Point p3 = -(p1 + p2);
 	//p3.operator++();
 	++p3;
-	cout << "p3: " << p3.x << ", " << p3.y << ", " << p3.z <<endl;
+	cout << "p3: " << p3[0] << ", " << p3[1] << ", " << p3[2] <<endl;
 	return 0;
 }
