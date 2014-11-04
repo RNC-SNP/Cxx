@@ -31,9 +31,9 @@ public:
 
 	//Screen(const Screen&) = delete;//use 'delete' to prevent copying construction(C++11)
 
-	Screen &operator = (const Screen&) = delete; //use 'delete' to prevent assignment(C++11)
+	Screen& operator=(const Screen&) = delete; //Define '=' operator: use 'delete' to prevent assignment(C++11)
 
-	~Screen() = default;//use the synthesized default deconstructor(C++11)
+	~Screen() = default;//use the synthesized default decstructor(C++11)
 
 	const char get(pos h, pos w);
 

@@ -10,19 +10,22 @@ class WindowManager{
 public:
 	WindowManager() = default;//use the synthesized default constructor(C++11)
 
-	//WindowManager(const WindowManager&) = delete;//use 'delete' to prevent from copying construction(C++11)
+	WindowManager(const WindowManager &wm) {//Copy-Constructor
+		++*refCount;
+	}
 
-	WindowManager &operator = (const WindowManager&) = delete; //use 'delete' to prevent assignment(C++11)
+	WindowManager& operator=(const WindowManager&); //Define '=' assignment operaton
 
-	~WindowManager() = default;//use the synthesized default deconstructor(C++11)
+	~WindowManager();//Destructor
 
 	using ScreenIndex = vector<Screen>::size_type;
 
 	void clear(ScreenIndex);
 
 private:
-
 	vector<Screen> screens{Screen(100, 100, ' ')};
+	vector<Screen> *p = &screens;
+	size_t *refCount;//Reference-Counting
 };
 
 #endif
