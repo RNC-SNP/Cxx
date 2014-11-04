@@ -14,7 +14,12 @@ public:
 		++*refCount;
 	}
 
-	WindowManager& operator=(const WindowManager&); //Define '=' assignment operaton
+	//Define '=' assignment operaton
+	WindowManager& operator=(const WindowManager&);
+
+	//Defining swap is particularly important for classes that we plan to use with algorithms that reorder elements.
+	//Such algorithms call swap whenever they need to exchange two elements.
+	friend void swap(WindowManager &lwm, WindowManager &rwm);
 
 	~WindowManager();//Destructor
 
@@ -27,5 +32,9 @@ private:
 	vector<Screen> *p = &screens;
 	size_t *refCount;//Reference-Counting
 };
+
+inline void swap(WindowManager &lwm, WindowManager &rwm) {
+	swap(lwm.p, rwm.p);//swap the pointers
+}
 
 #endif
