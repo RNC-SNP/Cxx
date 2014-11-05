@@ -42,6 +42,6 @@ int main (int argc, char **argv) {
 	Point p3 = -(p1 + p2);
 	//p3.operator++();
 	++p3;
-	cout << "p3: " << p3[0] << ", " << p3[1] << ", " << p3[2] <<endl;
+	cout << "p3: " << p3[0] << ", " << p3[1] << ", " << p3[2] << endl;
 	return 0;
 }
