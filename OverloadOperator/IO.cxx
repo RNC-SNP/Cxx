@@ -3,7 +3,7 @@
 
 using namespace std;
 
-typedef struct People {
+struct People {
 	string name;
 	int age;
 };
