@@ -6,8 +6,8 @@
 using namespace std;
 
 //Define function-template
-template<typename iteratorT, typename valueT>
-iteratorT find(const iteratorT& first, const iteratorT& last, const valueT& value) {
+template<typename iteratorT, typename T>
+iteratorT find(const iteratorT& first, const iteratorT& last, const T& value) {
     if (first == last) {
         return last;
     } else {
