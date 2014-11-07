@@ -10,7 +10,7 @@ public:
 	People() = default;
 	People(const string &s, int i) : name(s), age(i) {}
 	virtual void introduce() const;
-	virtual ~People() = default;
+	virtual ~People() = default;//Base class usually has a virtual destructor.
 protected:
 	string name;
 	int age;
