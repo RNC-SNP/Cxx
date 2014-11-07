@@ -3,6 +3,8 @@
 
 #include <string>
 
+using namespace std;
+
 class People {
 public:
 	People() = default;

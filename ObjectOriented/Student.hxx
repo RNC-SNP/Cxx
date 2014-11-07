@@ -1,7 +1,10 @@
 #ifndef STUDENT_HXX
 #define STUDENT_HXX
 
+#include "People.hxx"
 #include <string>
+
+using namespace std;
 
 class Student : public People {
 public:
