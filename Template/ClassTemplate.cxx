@@ -2,15 +2,13 @@
 #include <memory>
 #include <vector>
 
-using namespace std;
-
 template<typename T>
 class Block {
 public:
     typedef T value_type;
-    typedef typename vector<T>::size_type size_type;
+    typedef typename std::vector<T>::size_type size_type;
 
-    Block(initializer_list<T> il);
+    Block(std::initializer_list<T> il);
 
     size_type size() {return data->size();}
     bool empty() {return data->empty();}
@@ -20,18 +18,18 @@ public:
     T& back();
     T& operator[](size_type i);
 private:
-    shared_ptr<vector<T>> data;
-    void check(size_type i, const string &msg);
+    std::shared_ptr<std::vector<T>> data;
+    void check(size_type i, const std::string &msg);
 };
 
 template<typename T>
-Block<T>::Block(initializer_list<T> il):data(make_shared<vector<T>>(il)) {
+Block<T>::Block(std::initializer_list<T> il):data(std::make_shared<std::vector<T>>(il)) {
 }
 
 template<typename T>
-void Block<T>::check(size_type i, const string &msg) {
+void Block<T>::check(size_type i, const std::string &msg) {
     if(i >= data->size()) {
-        throw out_of_range(msg);
+        throw std::out_of_range(msg);
     }
 }
 
@@ -55,12 +53,12 @@ void Block<T>::pop_back() {
 
 
 int main (int argc, char **argv) {
-    Block<string> block({"Andy", "Bob", "Chris", "Denny", "Emma", "Frank"});
+    Block<std::string> block({"Andy", "Bob", "Chris", "Denny", "Emma", "Frank"});
     block.pop_back();
-    string str = "Rinc";
+    std::string str = "Rinc";
     block.push_back(str);
     for (int i = 0; !block.empty() && i < block.size(); i++) {
-        cout << block[i] << endl;
+        std::cout << block[i] << std::endl;
     }
     return 0;
 }

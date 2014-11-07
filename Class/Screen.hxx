@@ -3,8 +3,6 @@
 
 #include <string>
 
-using namespace std;
-
 class Screen {
 	friend class WindowManager;//WindowManager can visit all menmbers of this class
 	/*
@@ -15,8 +13,8 @@ class Screen {
 	//friend void WindowManager::clear(ScreenIndex);
 
 public:
-	//typedef string::size_type pos;
-	using pos = string::size_type;	
+	//typedef std::string::size_type pos;
+	using pos = std::string::size_type;	
 
 	Screen() = default;//use the synthesized default constructor(C++11)
 
@@ -42,7 +40,7 @@ public:
 private:
 	pos cursor = 0;
 	pos height = 0, width = 0;
-	string content;
+	std::string content;
 };
 
 #endif

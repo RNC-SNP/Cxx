@@ -1,7 +1,5 @@
 #include <iostream>
 
-using namespace std;
-
 class Point {
 public:
 	Point(int i1, int i2, int i3): x(i1), y(i2), z(i3){}
@@ -38,10 +36,10 @@ int Point::operator[](size_t n) {
 int main (int argc, char **argv) {
 	Point p1(1, 3, 5);
 	Point p2(2, 4, 6);
-	cout << (p1 == p2 ? "p1 == p2" : "p1 != p2") << endl;
+	std::cout << (p1 == p2 ? "p1 == p2" : "p1 != p2") << std::endl;
 	Point p3 = -(p1 + p2);
 	//p3.operator++();
 	++p3;
-	cout << "p3: " << p3[0] << ", " << p3[1] << ", " << p3[2] << endl;
+	std::cout << "p3: " << p3[0] << ", " << p3[1] << ", " << p3[2] << std::endl;
 	return 0;
 }

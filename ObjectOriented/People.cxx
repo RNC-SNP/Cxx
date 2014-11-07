@@ -1,9 +1,7 @@
 #include "People.hxx"
 #include <iostream>
 
-using namespace std;
-
 void People::introduce() const {
-	cout << "Name: " << name << endl;
-	cout << "Age: " << age << endl;
+	std::cout << "Name: " << name << std::endl;
+	std::cout << "Age: " << age << std::endl;
 }

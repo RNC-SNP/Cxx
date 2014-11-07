@@ -1,32 +1,30 @@
 #include <iostream>
 #include <string>
 
-using namespace std;
-
 int main(int argc, char **argv) {
 	//Init with count and char:
-	string s1(9, 'Z');
-	string s2 = string(8, 'z');
+	std::string s1(9, 'Z');
+	std::string s2 = std::string(8, 'z');
 
 	//Iterator:
 	if (s2.begin() != s2.end()) {//compare two iterators(pointers) to check if the string is empty
 		for (auto it = s2.begin(); it != s2.end() && !isspace(*it); it++) {
 			*it = toupper(*it);
-			cout << *it << endl;
+			std::cout << *it << std::endl;
 		}
 	}	
 
 	//getline():
-	string line;
-	while(getline(cin, line)) {
+	std::string line;
+	while(getline(std::cin, line)) {
 		if (!line.empty() && line.size() <= 10) {
-			line[0] = toupper(line[0]);//Access string as char array
+			line[0] = std::toupper(line[0]);//Access string as char array
 			for (auto &c : line) {
-				c = toupper(c);//'c' is a reference, so it can be modified
+				c = std::toupper(c);//'c' is a reference, so it can be modified
 			}
-			cout << line << endl;
+			std::cout << line << std::endl;
 		} else {
-			cout << "Too long!!" << endl;
+			std::cout << "Too long!!" << std::endl;
 		}
 	}
 

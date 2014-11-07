@@ -4,8 +4,6 @@
 #include <vector>
 #include "Screen.hxx"
 
-using namespace std;
-
 class WindowManager{
 public:
 	WindowManager() = default;//use the synthesized default constructor(C++11)
@@ -23,13 +21,13 @@ public:
 
 	~WindowManager();//Destructor
 
-	using ScreenIndex = vector<Screen>::size_type;
+	using ScreenIndex = std::vector<Screen>::size_type;
 
 	void clear(ScreenIndex);
 
 private:
-	vector<Screen> screens{Screen(100, 100, ' ')};
-	vector<Screen> *p = &screens;
+	std::vector<Screen> screens{Screen(100, 100, ' ')};
+	std::vector<Screen> *p = &screens;
 	size_t *refCount;//Reference-Counting
 };
 

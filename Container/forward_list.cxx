@@ -1,11 +1,9 @@
 #include <iostream>
 #include <forward_list>
 
-using namespace std;
-
 int main (int argc, char ** argv) {
 
-	forward_list<int> fl = {0,1,2,3,4,5,6,7,8,9};
+	std::forward_list<int> fl = {0,1,2,3,4,5,6,7,8,9};
 
 	auto prev = fl.before_begin();
 	auto curr = fl.begin();
@@ -20,7 +18,7 @@ int main (int argc, char ** argv) {
 	}
 
 	for (curr = fl.begin(); curr != fl.end(); curr++) {
-		cout << *curr << endl;
+		std::cout << *curr << std::endl;
 	}
 
 	return 0;

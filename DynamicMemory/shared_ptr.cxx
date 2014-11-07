@@ -2,21 +2,19 @@
 #include <string>
 #include <memory>
 
-using namespace std;
-
 int main (int argc, char **argv) {
-	//NOTE: shared_ptrs Automatically Destroy Their Objects
+	//NOTE: 'shared_ptr's Automatically Destroy Their Objects
 
-	//shared_ptr<string> sp(new string());
-	//shared_ptr<string> sp = make_shared<string>();
-	auto sp = make_shared<string>();
+	//std::shared_ptr<std::string> sp(new std::string());
+	//std::shared_ptr<std::string> sp = std::make_shared<std::string>();
+	auto sp = std::make_shared<std::string>();
 
 	if (sp && sp->empty()) {
 		*sp = "Rinc";
 	}
 
-	string *sq = sp.get();//returns a built-in pointer to the object that the smart pointer is managing
-	cout << *sq << endl;
+	std::string *sq = sp.get();//returns a built-in pointer to the object that the smart pointer is managing
+	std::cout << *sq << std::endl;
 
 	return 0;
 }

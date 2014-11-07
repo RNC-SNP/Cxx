@@ -1,14 +1,12 @@
 #include <iostream>
 
-using namespace std;
-
 template<typename T>
-ostream& print(ostream& os, const T& t) {
-    return os << t << endl;
+std::ostream& print(std::ostream& os, const T& t) {
+    return os << t << std::endl;
 }
 
 template<typename T, typename... Args>
-ostream& print(ostream &os, const T &t, const Args&... rest) {
+std::ostream& print(std::ostream &os, const T &t, const Args&... rest) {
     print(os, t);
     return print(os, rest...);
 }

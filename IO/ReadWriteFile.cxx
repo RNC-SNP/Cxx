@@ -3,50 +3,48 @@
 #include <string>
 #include <vector>
 
-using namespace std;
-
-void readPrint(const string &inFileName);
-void readWrite(const string &inFileName, const string &outFileName);
+void readPrint(const std::string &inFileName);
+void readWrite(const std::string &inFileName, const std::string &outFileName);
 
 int main (int argc, char **argv) {
-    const string inFileName = "ReadWriteFile.cxx";
-    const string outFileName = "ReadWriteFile.cpp";
+    const std::string inFileName = "ReadWriteFile.cxx";
+    const std::string outFileName = "ReadWriteFile.cpp";
     readPrint(inFileName);
     readWrite(inFileName, outFileName);
     return 0;
 }
 
-void readPrint(const string &inFileName) {
-    //ifstream fin;
+void readPrint(const std::string &inFileName) {
+    //std::ifstream fin;
     //fin.open(inFileName);
-    //ifstream fin(inFileName);//Init and open file directly
-    ifstream fin(inFileName, ios::in);//Init and open file with mode
+    //std::ifstream fin(inFileName);//Init and open file directly
+    std::ifstream fin(inFileName, std::ios::in);//Init and open file with mode
 
-    vector<string> v;
+    std::vector<std::string> v;
     if (fin.is_open()) {
-        string content;
+        std::string content;
         //while (fin >> content) {//read word by word
         while (getline(fin, content)) {//read line by line
             v.push_back(content);
             v.push_back("\n");
         }
 
-        for (vector<string>::iterator it = v.begin(); it != v.end(); ++it) {
-            cout << *it;
+        for (std::vector<std::string>::iterator it = v.begin(); it != v.end(); ++it) {
+            std::cout << *it;
         }
 
         v.clear();
     } else {
-        cout << "Failed to open file." << endl;
+        std::cout << "Failed to open file." << std::endl;
     }
     fin.close();
 }
 
-void readWrite(const string &inFileName, const string &outFileName) {
-    ifstream fin(inFileName, ios::in);
+void readWrite(const std::string &inFileName, const std::string &outFileName) {
+    std::ifstream fin(inFileName, std::ios::in);
 
     if (fin.is_open()) {
-        ofstream fout(outFileName, ios::out);
+        std::ofstream fout(outFileName, std::ios::out);
         char buffer[1024];
         while (!fin.eof()) {
             fin.read(buffer, 1024);//read in a buffer array
@@ -55,7 +53,7 @@ void readWrite(const string &inFileName, const string &outFileName) {
 
         fout.close();
     } else {
-        cout << "Failed to open file." << endl;
+        std::cout << "Failed to open file." << std::endl;
     }
     fin.close();
 }

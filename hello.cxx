@@ -1,11 +1,9 @@
 #include <iostream>
 #include <string>
 
-using namespace std;
-
 int main (int argc, char **argv) {
-	string firstName, familyName;
-	cin >> firstName >> familyName;
-	cout << "Hello, " << firstName << " " << familyName << "." << endl;
+	std::string firstName, familyName;
+	std::cin >> firstName >> familyName;
+	std::cout << "Hello, " << firstName << " " << familyName << "." << std::endl;
 	return 0;
 }
