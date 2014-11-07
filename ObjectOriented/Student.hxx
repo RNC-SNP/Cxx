@@ -1,10 +1,7 @@
 #ifndef STUDENT_HXX
 #define STUDENT_HXX
 
-#include <iostream>
 #include <string>
-
-using namespace std;
 
 class Student : public People {
 public:
@@ -14,11 +11,5 @@ public:
 private:
 	string stu_no;
 };
-
-void Student::introduce() const {
-	cout << "Name: " << name << endl;
-	cout << "Age: " << age << endl;
-	cout << "No.: " << stu_no << endl;
-}
 
 #endif

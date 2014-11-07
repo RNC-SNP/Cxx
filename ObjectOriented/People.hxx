@@ -1,10 +1,7 @@
 #ifndef PEOPLE_HXX
 #define PEOPLE_HXX
 
-#include <iostream>
 #include <string>
-
-using namespace std;
 
 class People {
 public:
@@ -16,10 +13,5 @@ protected:
 	string name;
 	int age;
 };
-
-void People::introduce() const {
-	cout << "Name: " << name << endl;
-	cout << "Age: " << age << endl;
-}
 
 #endif
