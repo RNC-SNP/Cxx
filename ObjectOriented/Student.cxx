@@ -2,7 +2,6 @@
 #include <iostream>
 
 void Student::introduce() const {
-	std::cout << "Name: " << name << std::endl;
-	std::cout << "Age: " << age << std::endl;
+	this->People::introduce();//use scope(::) to call base class's function
 	std::cout << "No.: " << stu_no << std::endl;
 }
