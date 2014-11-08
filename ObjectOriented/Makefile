@@ -7,7 +7,7 @@ xx : $(OBJS)
 main.o : main.cxx People.hxx Student.hxx
 	$(GXX) -c main.cxx
 
-People.o : People.cxx People.hxx
+People.o : People.cxx People.hxx Object.hxx
 	$(GXX) -c People.cxx
 
 Student.o : Student.cxx Student.hxx

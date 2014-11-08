@@ -3,10 +3,16 @@
 
 int main (int argc, char **argv) {
 	People *p = new People("Rinc", 25);
-	p->introduce();//call People::introduce()
+	//call base class's function:
+	p->introduce();
+	p->print();
 	p = new Student("Rinc", 25, "2008112208");//rebound to a derived object
-	p->introduce();//call Student::introduce()
-	p->People::introduce();//use the scope(::) to specify the function's version
+	//call derived class's function:
+	p->introduce();
+	p->print();
+	//use the scope(::) to call base class's function:
+	p->People::introduce();
+	p->People::print();
 	delete p;
 	return 0;
 }
