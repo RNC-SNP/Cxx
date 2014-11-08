@@ -10,3 +10,7 @@ void People::introduce() const {
 	std::cout << "Name: " << name << std::endl;
 	std::cout << "Age: " << age << std::endl;
 }
+
+People::~People() {
+	std::cout << "destructing in 'People'..." << std::endl;
+}

@@ -6,6 +6,7 @@ int main (int argc, char **argv) {
 	//call base class's function:
 	p->introduce();
 	p->print();
+	delete p;
 	p = new Student("Rinc", 25, "2008112208");//rebound to a derived object
 	//call derived class's function:
 	p->introduce();

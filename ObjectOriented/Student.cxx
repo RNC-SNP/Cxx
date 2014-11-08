@@ -9,3 +9,7 @@ void Student::introduce() const {
 	this->People::introduce();//use scope(::) to call base class's function
 	std::cout << "No.: " << stu_no << std::endl;
 }
+
+Student::~Student() {
+	std::cout << "destructing in 'Student'..." << std::endl;
+}

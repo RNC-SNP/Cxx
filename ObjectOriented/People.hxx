@@ -15,6 +15,8 @@ public:
 	void print() const override;
 	//declare a non-pure virtual function
 	virtual void introduce() const;
+	//override the destructor
+	~People() override;
 protected:
 	std::string name;
 	int age;
