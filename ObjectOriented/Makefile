@@ -1,17 +1,17 @@
-GXX = g++ -std=c++11
+CXX = clang++ -std=c++11
 OBJS = main.o People.o Student.o
 
 xx : $(OBJS)
-	$(GXX) -o xx $(OBJS)
+	$(CXX) -o xx $(OBJS)
 
 main.o : main.cxx People.hxx Student.hxx
-	$(GXX) -c main.cxx
+	$(CXX) -c main.cxx
 
 People.o : People.cxx People.hxx Object.hxx
-	$(GXX) -c People.cxx
+	$(CXX) -c People.cxx
 
 Student.o : Student.cxx Student.hxx
-	$(GXX) -c Student.cxx
+	$(CXX) -c Student.cxx
 
 clean:
 	rm xx $(OBJS)
