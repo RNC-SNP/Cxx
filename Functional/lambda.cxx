@@ -21,7 +21,7 @@ int main (int argc, char **argv) {
 	'[&var]'     Capture the variable 'var' by reference;
 	'[=, &var]': Capture all variables by making a copy, but capture the variable 'var' by reference;
 	'[&, var]':  Capture all variables by reference, but capture the variable 'var' by making a copy;
-	While capturing by reference, the variable can be modified if not 'const'.
+	While capturing a variable by reference, it can be modified if it's not a 'const'.
 	*/
 	auto circleSpace = [=, &pi] (double radius) -> double { pi = 3.1415926535; return pi * radius * radius; };
 	std::cout << circleSpace(1.23456789) << std::endl;
