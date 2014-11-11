@@ -7,12 +7,12 @@ int main (int argc, char **argv) {
 	//Use 'function' to declare a function pointer(C++11):
 	std::function<double(double, double)> multiply;
 	//Use lambda expression:
-	multiply = [](double x, double y){return x * y;};
+	multiply = [] (double x, double y) -> double { return x * y; };
 	std::cout << multiply(1.234, 5.6789) << std::endl;
 
 	double pi = 3.1415926535;
 	//Use '[&]' to capture a variable outside of the lambda:
-	auto circleSpace = [&](double radius){return pi * radius * radius;};
+	auto circleSpace = [&] (double radius) -> double { return pi * radius * radius; };
 	std::cout << circleSpace(1.23456789) << std::endl;
 
 	std::vector<char> v;
@@ -20,7 +20,7 @@ int main (int argc, char **argv) {
 		v.push_back((char)('A' + i));
 	}
 	//Use lambda with 'for_each' template:
-	for_each(v.begin(), v.end(), [](char c){std::cout << c << std::endl;});
+	for_each(v.begin(), v.end(), [] (char c) -> void { std::cout << c << std::endl; });
 
 	return 0;
 }
