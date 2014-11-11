@@ -1,4 +1,4 @@
-Cxx-Demo
+Cxx-Snippets
 ============
 
-Demos of C++.
+Code Snippets of C++.
