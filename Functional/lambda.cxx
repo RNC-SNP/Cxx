@@ -14,10 +14,14 @@ int main (int argc, char **argv) {
 	/*
 	Capture variables outside of the lambda:
 	'[]':        Capture nothing;
-	'[=]':       Capture any referenced variable by making a copy, the variable cannot be modified;
-	'[&]':       Capture any referenced variable by reference, the variable can be modified if not 'const';
-	'[=, &var]': Capture any referenced variable by making a copy, but capture variable 'var' by reference;
 	'[this]':    Capture the 'this' pointer;
+	'[=]':       Capture all variables by making a copy;
+	'[var]'      Capture the variable 'var' by making a copy.
+	'[&]':       Capture all variables by reference;
+	'[&var]'     Capture the variable 'var' by reference;
+	'[=, &var]': Capture all variables by making a copy, but capture the variable 'var' by reference;
+	'[&, var]':  Capture all variables by reference, but capture the variable 'var' by making a copy;
+	While capturing by reference, the variable can be modified if not 'const'.
 	*/
 	auto circleSpace = [=, &pi] (double radius) -> double { pi = 3.1415926535; return pi * radius * radius; };
 	std::cout << circleSpace(1.23456789) << std::endl;
