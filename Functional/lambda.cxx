@@ -2,6 +2,8 @@
 #include <functional>
 #include <vector>
 #include <algorithm>
+#include <string>
+#include <memory>
 
 int main (int argc, char **argv) {
 	//Use 'std::function' to declare a function pointer(C++11):
@@ -9,6 +11,10 @@ int main (int argc, char **argv) {
 	//Define lambda(C++11):
 	multiply = [] (double x, double y) -> double { return x * y; };//So, a lambda's type is 'std::function'
 	std::cout << multiply(1.234, 5.6789) << std::endl;
+	
+	//In C++14, even the parameters' type can be `auto`:
+	auto multiplyX = [] (auto x, auto y) { return x * y; };
+	std::cout << multiplyX(-1234, 5.6789) << std::endl;
 
 	double pi = 3.14;
 	/*
@@ -25,6 +31,14 @@ int main (int argc, char **argv) {
 	*/
 	auto circleSpace = [=, &pi] (double radius) -> double { pi = 3.1415926535; return pi * radius * radius; };
 	std::cout << circleSpace(1.23456789) << std::endl;
+
+	//In C++14, the capturing can be a initializing expression.
+	//So you can capture a move-only variable:
+	std::unique_ptr<std::string> nameP(new std::string("Rinc"));
+	auto readName = [nameP = move(nameP)] { return *nameP; };
+	//Ofcource you can release it as well:
+	//auto readName = [nameP = nameP.release()] { return *nameP; };
+	std::cout << readName() << std::endl;
 
 	std::vector<char> v;
 	for (int i = 0; i < 26; i++) {
