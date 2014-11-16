@@ -32,6 +32,10 @@ int main (int argc, char **argv) {
 	auto circleSpace = [=, &pi] (double radius) -> double { pi = 3.1415926535; return pi * radius * radius; };
 	std::cout << circleSpace(1.23456789) << std::endl;
 
+	//We can also add a 'mutable' keyword after the parameters-list if we wanna modify the variables:
+	auto circleSpaceM = [=] (double radius) mutable -> double { pi = 3.1415926535; return pi * radius * radius; };
+	std::cout << circleSpaceM(1.23456789) << std::endl;
+
 	//In C++14, the capturing can be a initializing expression.
 	//So you can capture a move-only variable:
 	std::unique_ptr<std::string> nameP(new std::string("Rinc"));
