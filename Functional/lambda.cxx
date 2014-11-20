@@ -24,7 +24,6 @@ int main (int argc, char **argv) {
 	/*
 	Capture variables outside of the lambda:
 	'[]':        Capture nothing;
-	'[this]':    Capture the 'this' pointer;
 	'[=]':       Capture all variables by making a copy;
 	'[var]'      Capture the variable 'var' by making a copy.
 	'[&]':       Capture all variables by reference;
@@ -62,7 +61,10 @@ int main (int argc, char **argv) {
 
 	//In C++14, you can initialize more than one variables:
 	std::shared_ptr<std::string> str1, str2;
-	auto print = [str1 = std::make_shared<std::string>("Rinc"), str2 = std::make_shared<std::string>("Liu")] () { 
+	auto print = [
+		str1 = std::make_shared<std::string>("Rinc"), 
+		str2 = std::make_shared<std::string>("Liu")
+		] () { 
 		std::cout << *str1 << " " << *str2 << std::endl;
 	};
 	print();
