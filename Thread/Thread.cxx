@@ -2,13 +2,16 @@
 #include <thread>
 #include <chrono>
 
+//Get thread id:
+#define tid() std::this_thread::get_id()
+//Sleep the current thread for a specified time duration:
+#define sleep(duration) std::this_thread::sleep_for(std::chrono::seconds(duration))
+
 static const int threads_num = 10;
 
 void func_thread(const int duration) {
-	//Get thread id:
-	std::cout << "Called from thread " << std::this_thread::get_id() << "." << std::endl;
-	//Sleep the current thread for a specified time duration:
-	std::this_thread::sleep_for(std::chrono::seconds(duration));
+	std::cout << "Called from thread " << tid() << "." << std::endl;
+	sleep(duration);
 }
 
 int main(int argc, char **argv) {
@@ -20,5 +23,6 @@ int main(int argc, char **argv) {
 		//and the program will kill the new thread and exit.
 		threads[i].join();
 	}
+	std::cout << "Called from main thread " << tid() << "." << std::endl;
 	return 0;
 }
