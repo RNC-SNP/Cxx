@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <map>
 #include <curl/curl.h>
 
 static size_t write_func(void *new_data, size_t size, size_t nmemb, void *data) {
@@ -8,25 +9,37 @@ static size_t write_func(void *new_data, size_t size, size_t nmemb, void *data) 
   return new_data_size;
 }
 
-static std::string http(std::string url, std::string params, bool is_post, long timeout) {
+static std::string http(std::string url, const std::map<std::string, std::string> params, bool is_post, long timeout) {
   CURL *curl;
   std::string output;
   curl = curl_easy_init();
   if (curl) {
-    if (is_post) {
-      curl_easy_setopt(curl, CURLOPT_POSTFIELDS, params);
-    } else {
-      url += "?";
-      url += params;
+    std::string params_str;
+    for (auto it = params.begin(); it != params.end(); ++it) {
+      if (params_str.length() > 0) {
+        params_str.append("&");
+      }
+      params_str.append(it->first).append("=").append(it->second);
     }
+
+    if (!is_post) {
+      url.append("?").append(params_str);
+    }
+
     curl_easy_setopt(curl, CURLOPT_URL, url);
     curl_easy_setopt(curl, CURLOPT_TIMEOUT, timeout);
     curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_func);
     curl_easy_setopt(curl, CURLOPT_WRITEDATA, &output);
+
+    if (is_post) {
+      curl_easy_setopt(curl, CURLOPT_POSTFIELDS, params_str.c_str());
+    }
+
     CURLcode code = curl_easy_perform(curl);
     if (code != CURLE_OK) {
       std::cout << curl_easy_strerror(code) << std::endl;
     }
+
     curl_easy_cleanup(curl);
   }
   return output;
@@ -34,9 +47,18 @@ static std::string http(std::string url, std::string params, bool is_post, long 
 
 int main(int argc, char** argv) {
   const long timeout = 10L;
-  std::string get = http("https://api.douban.com/v2/user", "q=rinc&count=10", false, timeout);
-  std::cout << get << std::endl;
-  std::string post = http("https://api.douban.com/v2/book/25923597/collection", "status=wish&rating=5", true, timeout);
-  std::cout << post << std::endl;
+
+  std::map<std::string, std::string> params1;
+  params1.insert(std::pair<std::string, std::string>("q", "rinc"));
+  params1.insert(std::pair<std::string, std::string>("count", std::to_string(10)));
+  std::string res1 = http("https://api.douban.com/v2/user", params1, false, timeout);
+  std::cout << res1 << std::endl;
+
+  std::map<std::string, std::string> params2;
+  params2.insert(std::pair<std::string, std::string>("status", "wish"));
+  params2.insert(std::pair<std::string, std::string>("rating", std::to_string(5)));
+  std::string res2 = http("https://api.douban.com/v2/book/25923597/collection", params2, true, timeout);
+  std::cout << res2 << std::endl;
+
   return 0;
 }
