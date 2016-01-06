@@ -8,7 +8,7 @@ static size_t write_func(void *new_data, size_t size, size_t nmemb, void *data) 
   return new_data_size;
 }
 
-static std::string http(const std::string url, const std::params, bool is_post) {
+static std::string http(std::string url, std::params, bool is_post, long timeout) {
   CURL *curl;
   std::string output;
   curl = curl_easy_init();
@@ -20,6 +20,7 @@ static std::string http(const std::string url, const std::params, bool is_post) 
       url += params;
     }
     curl_easy_setopt(curl, CURLOPT_URL, url);
+    curl_easy_setopt(curl, CURLOPT_TIMEOUT, timeout);
     curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_func);
     curl_easy_setopt(curl, CURLOPT_WRITEDATA, &output);
     CURLcode code = curl_easy_perform(curl);
@@ -32,9 +33,10 @@ static std::string http(const std::string url, const std::params, bool is_post) 
 }
 
 int main(int argc, char** argv) {
-  std::string get = http("https://api.douban.com/v2/user", "q=rinc&count=10", false);
+  const long timeout = 10L;
+  std::string get = http("https://api.douban.com/v2/user", "q=rinc&count=10", false, timeout);
   std::cout << get << std::endl;
-  std::string post = http("https://api.douban.com/v2/book/25923597/collection", "status=wish&rating=5", true);
+  std::string post = http("https://api.douban.com/v2/book/25923597/collection", "status=wish&rating=5", true, timeout);
   std::cout << post << std::endl;
   return 0;
 }
