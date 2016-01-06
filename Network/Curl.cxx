@@ -15,6 +15,7 @@ static std::string http(const std::string url, const std::params, bool is_post) 
     if (is_post) {
       curl_easy_setopt(curl, CURLOPT_POSTFIELDS, params);
     } else {
+      url += "?";
       url += params;
     }
     curl_easy_setopt(curl, CURLOPT_URL, url);
