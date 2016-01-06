@@ -8,7 +8,7 @@ static size_t write_func(void *new_data, size_t size, size_t nmemb, void *data) 
   return new_data_size;
 }
 
-static std::string http(std::string url, std::params, bool is_post, long timeout) {
+static std::string http(std::string url, std::string params, bool is_post, long timeout) {
   CURL *curl;
   std::string output;
   curl = curl_easy_init();
