@@ -3,8 +3,9 @@
 #include <curl/curl.h>
 
 static size_t write_func(void *new_data, size_t size, size_t nmemb, void *data) {
-  ((std::string*)data)->append((char*)new_data, size * nmemb);
-  return size * nmemb;
+  size_t new_data_size = size * nmemb;
+  ((std::string*)data)->append((char*)new_data, new_data_size);
+  return new_data_size;
 }
 
 static std::string http(const std::string url, const std::params, bool is_post) {
