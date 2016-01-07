@@ -9,7 +9,7 @@ static size_t write_func(void *new_data, size_t size, size_t nmemb, void *data) 
 	return new_data_size;
 }
 
-static std::string http(std::string url, const std::map<std::string, std::string> headers, const std::map<std::string, std::string> params, bool is_post, long timeout) {
+static std::string http(const std::string url, const std::map<std::string, std::string> headers, const std::map<std::string, std::string> params, bool is_post, long timeout) {
 	std::string output;
 	CURL *curl = curl_easy_init();
 	if (curl) {
@@ -28,11 +28,13 @@ static std::string http(std::string url, const std::map<std::string, std::string
 			params_str.append(p_it->first).append("=").append(p_it->second);
 		}
 
+		std::string url_str;
+		url_str.append(url);
 		if (!is_post) {
-			url.append("?").append(params_str);
+			url_str.append("?").append(params_str);
 		}
 
-		curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
+		curl_easy_setopt(curl, CURLOPT_URL, url_str.c_str());
 		curl_easy_setopt(curl, CURLOPT_TIMEOUT, timeout);
 		if (m_headers != NULL) {
 			curl_easy_setopt(curl, CURLOPT_HTTPHEADER, m_headers);
