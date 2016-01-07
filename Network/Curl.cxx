@@ -58,7 +58,7 @@ static std::string http(const std::string url, const std::map<std::string, std::
 int main(int argc, char** argv) {
 	const long timeout = 10L;
 
-	std::string url1 = "https://api.douban.com/v2/user";
+	const std::string url1 = "https://api.douban.com/v2/user";
 	std::map<std::string, std::string> headers1;
 	std::map<std::string, std::string> params1;
 	params1.insert(std::pair<std::string, std::string>("q", "rinc"));
@@ -66,7 +66,7 @@ int main(int argc, char** argv) {
 	std::string res1 = http(url1, headers1, params1, false, timeout);
 	std::cout << res1 << std::endl;
 
-	std::string url2 = "https://api.douban.com/v2/book/25923597/collection";
+	const std::string url2 = "https://api.douban.com/v2/book/25923597/collection";
 	std::map<std::string, std::string> headers2;
 	std::map<std::string, std::string> params2;
 	params2.insert(std::pair<std::string, std::string>("status", "wish"));
