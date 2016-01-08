@@ -2,8 +2,9 @@
 #include <string>
 #include <map>
 #include <curl/curl.h>
+#include <stdio.h>
 
-static size_t write_func(void *new_data, size_t size, size_t nmemb, void *data) {
+static size_t http_write_func(void *new_data, size_t size, size_t nmemb, void *data) {
 	size_t new_data_size = size * nmemb;
 	((std::string*)data)->append((char*)new_data, new_data_size);
 	return new_data_size;
@@ -39,7 +40,7 @@ static std::string http(const std::string url, const std::map<std::string, std::
 		if (m_headers != NULL) {
 			curl_easy_setopt(curl, CURLOPT_HTTPHEADER, m_headers);
 		}
-		curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_func);
+		curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, http_write_func);
 		curl_easy_setopt(curl, CURLOPT_WRITEDATA, &output);
 		if (is_post) {
 			curl_easy_setopt(curl, CURLOPT_POSTFIELDS, params_str.c_str());
@@ -55,8 +56,32 @@ static std::string http(const std::string url, const std::map<std::string, std::
 	return output;
 }
 
+static size_t download_write_func(void *new_data, size_t size, size_t nmemb, void *data) {
+	return fwrite(new_data, size, nmemb, (FILE *)data);
+}
+
+static void download(const std::string src_url, const std::string dst_file, long timeout) {
+	FILE *file = fopen(dst_file.c_str(), "wb");
+	if (file) {
+		CURL *curl = curl_easy_init();
+		if (curl) {
+			curl_easy_setopt(curl, CURLOPT_URL, src_url.c_str());
+			curl_easy_setopt(curl, CURLOPT_TIMEOUT, timeout);
+			curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, download_write_func);
+			curl_easy_setopt(curl, CURLOPT_WRITEDATA, file);
+			CURLcode code = curl_easy_perform(curl);
+			if (code != CURLE_OK) {
+				std::cout << curl_easy_strerror(code) << std::endl;
+			}
+			curl_easy_cleanup(curl);
+		}
+	} else {
+		std::cout << "Open file failed." << std::endl;
+	}
+}
+
 int main(int argc, char** argv) {
-	const long timeout = 10L;
+	const long timeout = 15L;
 
 	const std::string url1 = "https://api.douban.com/v2/user";
 	std::map<std::string, std::string> headers1;
@@ -73,6 +98,10 @@ int main(int argc, char** argv) {
 	params2.insert(std::pair<std::string, std::string>("rating", std::to_string(5)));
 	std::string res2 = http(url2, headers2, params2, true, timeout);
 	std::cout << res2 << std::endl;
+
+	const std::string url3 = "https://github.com/RincLiu/Cxx-Snippets/blob/master/Network/Curl.cxx";
+	const std::string file = "~/Curl.cxx";
+	download(url3, file, timeout);
 
 	return 0;
 }
