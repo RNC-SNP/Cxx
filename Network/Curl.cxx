@@ -60,6 +60,16 @@ static size_t download_write_func(void *new_data, size_t size, size_t nmemb, voi
 	return fwrite(new_data, size, nmemb, (FILE *)data);
 }
 
+/*
+static int download_progress_func(void *ptr, double total_to_download, double current_downloaded, double total_to_upload, double current_uploaded) {
+	if (total_to_download > 0.0) {
+		double progress = current_downloaded * 100 / total_to_download;
+		std::cout << progress << "%" << std::endl;
+	}
+	return 0;
+}
+*/
+
 static void download(const std::string src_url, const std::string dst_file, long timeout) {
 	FILE *file = fopen(dst_file.c_str(), "wb");
 	if (file) {
@@ -69,6 +79,10 @@ static void download(const std::string src_url, const std::string dst_file, long
 			curl_easy_setopt(curl, CURLOPT_TIMEOUT, timeout);
 			curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, download_write_func);
 			curl_easy_setopt(curl, CURLOPT_WRITEDATA, file);
+			/*
+			curl_easy_setopt(curl, CURLOPT_NOPROGRESS, false);
+			curl_easy_setopt(curl, CURLOPT_PROGRESSFUNCTION, download_progress_func);
+			*/
 			CURLcode code = curl_easy_perform(curl);
 			if (code != CURLE_OK) {
 				std::cout << curl_easy_strerror(code) << std::endl;
@@ -99,8 +113,8 @@ int main(int argc, char** argv) {
 	std::string res2 = http(url2, headers2, params2, true, timeout);
 	std::cout << res2 << std::endl;
 
-	const std::string url3 = "https://github.com/RincLiu/Cxx-Snippets/blob/master/Network/Curl.cxx";
-	const std::string file = "~/Curl.cxx";
+	const std::string url3 = "https://raw.githubusercontent.com/RincLiu/Cxx-Snippets/master/Network/Curl.cxx";
+	const std::string file = "xxx.txt";
 	download(url3, file, timeout);
 
 	return 0;
