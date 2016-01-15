@@ -1,12 +1,12 @@
 ### Install libcurl:
 
-Ubuntu:
+* Ubuntu:
 
 ```
 sudo apt-get install libcurl4-gnutls-dev
 ```
 
-OS X:
+* OS X:
 
 No need to install.
 
