@@ -4,6 +4,18 @@ Code Snippets of C++.
 
 ## C++11
 
+* **auto specifier**:
+
+  Specifying that the type of the variable that is being declared will be automatically deduced from its initializer. <[code](https://github.com/RincLiu/Cxx-Snippets/blob/master/Thread/Async.cxx#L18)>
+
+* **constexpr**:
+
+  Specifying that the value of a variable or function can appear in constant expressions. <[code](https://github.com/RincLiu/Cxx-Snippets/blob/master/Thread/Async.cxx#L8)>
+  
+* **std::move**:
+
+  Producing an xvalue expression that identifies its argument. <[code](https://github.com/RincLiu/Cxx-Snippets/blob/master/Thread/Thread.cxx#L22)>
+
 * **std::atomic_flag**:
 
   An atomic boolean type. <[code](https://github.com/RincLiu/Cxx-Snippets/blob/master/Atomic/AtomicFlag.cxx#L8)>
