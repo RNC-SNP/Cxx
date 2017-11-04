@@ -1,6 +1,6 @@
 Cxx-Snippets
 ============
-Code Snippets of C++.
+Code Snippets of Code snippets of C++11, C++14, C++17.
 
 ## C++11
 
