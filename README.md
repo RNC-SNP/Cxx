@@ -78,7 +78,7 @@ Code Snippets of Code snippets of C++11, C++14, C++17.
 
 * **std::string_view**
 
-  A way to wrap an existing string in a NON-OWNING way, which is cheaper than `std::string` to constrct and copy. <[code](https://github.com/RincLiu/Cxx-Snippets/blob/master/Container/string_view.cxx#L21)>
+  A way to wrap an existing string in a NON-OWNING way, which is cheaper than `std::string` to constrct and copy. <[code](https://github.com/RincLiu/Cxx-Snippets/blob/master/Container/string_view.cxx#L20)>
 
 * **filesystem::space_info**:
 
