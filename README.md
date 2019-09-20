@@ -64,7 +64,7 @@ Code Snippets of Code snippets of C++11, C++14, C++17.
 
    A synchronization primitive that can be used to block a thread, or multiple threads at the same time, until another thread both modifies a shared variable (the condition), and notifies the condition_variable. <[code](https://github.com/RincLiu/Cxx-Snippets/blob/master/Thread/ConditionVariable.cxx#L10)>
    
-   * **std::chrono::system_clock**:
+* **std::chrono::system_clock**:
    
    The system-wide real time wall clock. <[code](https://github.com/RincLiu/Cxx-Snippets/blob/master/DateTime/SystemClock.cxx#L8)>
 
